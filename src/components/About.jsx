@@ -50,31 +50,24 @@ const About = () => {
           <h2 className="text-white font-black text-3xl sm:text-4xl md:text-5xl">Overview</h2>
         </motion.div>
 
-        <motion.div
-          variants={fadeIn("", "", 0.2, 1)}
-          className="mt-8 mx-auto max-w-3xl bg-[#1a1f2c] rounded-lg p-6 border border-gray-800 shadow-md"
-        >
-          <p className="text-gray-300 text-base leading-7">
-            I'm a versatile tech professional specializing in Machine Learning, Software Development,
-            and Data Analysis. With a strong foundation in Python and its ML/AI ecosystem, I develop
-            innovative solutions that transform complex data into actionable intelligence.
-            <br /><br />
-            My expertise includes developing and deploying machine learning models, creating scalable
-            software applications, and performing in-depth data analysis. I work with technologies
-            like TensorFlow, PyTorch, and scikit-learn for ML projects, while utilizing modern software
-            development practices to ensure robust and maintainable code.
-            <br /><br />
-            I'm particularly passionate about leveraging AI to solve real-world problems, whether it's
-            through predictive analytics, computer vision, or natural language processing. My approach
-            combines technical expertise with strong problem-solving skills to deliver effective solutions.
-          </p>
-        </motion.div>
+      <motion.p
+        variants={fadeIn('', '', 0.1, 1)}
+        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+      >
+        Highly motivated Junior Front-End Developer with a passion for creating
+        user- friendly web applications and interfaces. Possesses excellent
+        problem-solving abilities and a keen eye for detail, ensuring the
+        delivery of high-quality interface. Proficient in HTML, CSS, and
+        JavaScript, with a strong understanding of UI/UX principles.
+        Collaborative team player with a continuous learning mindset. A
+        proactive team player with effective communication skills and a passion
+        for staying updated with the latest frontend tools and technologies.
+      </motion.p>
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {servicesData.map((service, index) => (
-            <ServiceCard key={service.title} index={index} {...service} />
-          ))}
-        </div>
+      <div className="mt-20 flex flex-wrap gap-10">
+        {services.map((service, index) => (
+          <ServiceCard key={service.title} index={index} {...service} />
+        ))}
       </div>
     </section>
   );
