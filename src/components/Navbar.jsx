@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { styles } from '../styles';
 import { navLinks } from '../constants';
-import { logo, menu, close } from '../assets';
+import { menu, close } from '../assets';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
@@ -42,17 +42,16 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img
-            src={logo}
-            alt="logo"
-            className="w-9 h-9 object-contain rounded-full"
-          />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex ">
-            Olawale &nbsp;
-            <span className="sm:block hidden"> | Olafisoye</span>
+          {/* Redesign text-based logo */}
+          <p className="text-white font-bold cursor-pointer flex items-center">
+            <span className="text-[22px] sm:text-[28px] md:text-[32px]">Ansa</span>
+            <span className="text-[16px] sm:text-[20px] md:text-[24px] ml-1 hidden sm:inline-block">
+              | David
+            </span>
           </p>
         </Link>
 
+        {/* Desktop Navigation Links */}
         <ul className="list-none hidden sm:flex flex-row gap-10">
           {navLinks.map((nav) => (
             <li
@@ -67,6 +66,7 @@ const Navbar = () => {
           ))}
         </ul>
 
+        {/* Mobile Menu Button */}
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img
             src={toggle ? close : menu}
@@ -75,6 +75,7 @@ const Navbar = () => {
             onClick={() => setToggle(!toggle)}
           />
 
+          {/* Mobile Dropdown Menu */}
           <div
             className={`${
               !toggle ? 'hidden' : 'flex'

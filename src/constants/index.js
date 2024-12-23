@@ -200,72 +200,102 @@ const testimonials = [
 
 const projects = [
   {
-    name: 'ThreeJs-Project',
+    name: 'AI Body Measurement Generator',
     description:
-      'Web-based platform that allows users to upload or use Ai to design any kind of logo you want on a cloth by applying logo, color and gradient.',
+      'An AI-powered platform that uses computer vision to generate accurate body measurements from images. The system helps fashion designers, retailers, and e-commerce platforms by providing reliable and automated body measurements for custom clothing.',
     tags: [
       {
-        name: 'react',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'threejs',
+        name: 'python',
         color: 'green-text-gradient',
       },
       {
-        name: 'tailwind',
-        color: 'pink-text-gradient',
-      },
-      {
-        name: 'vite',
-        color: 'yello-text-gradient',
-      },
-    ],
-    image: threejs1,
-    source_code_link: 'https://github.com/walex4242/ThreeJs_Project_Ai',
-  },
-  {
-    name: 'Metaverse',
-    description:
-      'Web article that talks about importance of metaverse and it usefullness. It shows the imaginary of how the metaverse operate aswell .',
-    tags: [
-      {
-        name: 'next',
+        name: 'machine-learning',
         color: 'blue-text-gradient',
       },
       {
-        name: 'react',
-        color: 'green-text-gradient',
+        name: 'AI',
+        color: 'purple-text-gradient',
       },
       {
-        name: 'tailwind',
-        color: 'pink-text-gradient',
-      },
-    ],
-    image: metaverse,
-    source_code_link: 'https://github.com/walex4242/metaverse',
-  },
-  {
-    name: 'Dalle-Project',
-    description:
-      'A web application that allow users to generate image through the help of Ai and also share with the community.',
-    tags: [
-      {
-        name: 'react',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'mongodb',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'vite',
+        name: 'tensorflow',
         color: 'yellow-text-gradient',
       },
     ],
-    image: dalle,
-    source_code_link: 'https://github.com/walex4242/Dall-Eproject',
+    image: '/path/to/ai-body-measurement.jpg',
+    source_code_link: 'https://github.com/your-username/ai-body-measurement-generator',
+  },
+  {
+    name: 'Data Management System',
+    description:
+      'A comprehensive data management system that integrates machine learning models to automate data classification, cleaning, and visualization. This system is designed for businesses to manage large datasets efficiently and make data-driven decisions.',
+    tags: [
+      {
+        name: 'python',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'django',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'postgresql',
+        color: 'red-text-gradient',
+      },
+      {
+        name: 'AI',
+        color: 'purple-text-gradient',
+      },
+    ],
+    image: '/path/to/data-management-system.jpg',
+    source_code_link: 'https://github.com/your-username/data-management-system',
+  },
+  {
+    name: 'AI Fashion Design Models',
+    description:
+      'An AI-driven fashion design platform that allows users to create fashion designs by applying AI models for predicting trends, generating clothing designs, and visualizing them on virtual mannequins. The platform uses GANs (Generative Adversarial Networks) to produce unique fashion pieces.',
+    tags: [
+      {
+        name: 'python',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'tensorflow',
+        color: 'yellow-text-gradient',
+      },
+      {
+        name: 'AI',
+        color: 'purple-text-gradient',
+      },
+      {
+        name: 'fashion-tech',
+        color: 'blue-text-gradient',
+      },
+    ],
+    image: '/path/to/ai-fashion-design.jpg',
+    source_code_link: 'https://github.com/your-username/ai-fashion-design-models',
+  },
+  {
+    name: 'Predictive Analytics for Fashion Trends',
+    description:
+      'Developed a predictive model using machine learning to forecast upcoming fashion trends based on historical data, social media analysis, and market signals. This model helps designers and retailers stay ahead of trends.',
+    tags: [
+      {
+        name: 'python',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'machine-learning',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'data-analysis',
+        color: 'yellow-text-gradient',
+      },
+    ],
+    image: '/path/to/fashion-trends.jpg',
+    source_code_link: 'https://github.com/your-username/fashion-trends-predictor',
   },
 ];
+
 
 export { services, technologies, experiences, testimonials, projects };
