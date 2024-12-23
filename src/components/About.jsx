@@ -50,24 +50,24 @@ const About = () => {
           <h2 className="text-white font-black text-3xl sm:text-4xl md:text-5xl">Overview</h2>
         </motion.div>
 
-      <motion.p
-        variants={fadeIn('', '', 0.1, 1)}
-        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
-      >
-        Highly motivated Junior Front-End Developer with a passion for creating
-        user- friendly web applications and interfaces. Possesses excellent
-        problem-solving abilities and a keen eye for detail, ensuring the
-        delivery of high-quality interface. Proficient in HTML, CSS, and
-        JavaScript, with a strong understanding of UI/UX principles.
-        Collaborative team player with a continuous learning mindset. A
-        proactive team player with effective communication skills and a passion
-        for staying updated with the latest frontend tools and technologies.
-      </motion.p>
+        <motion.p
+          variants={fadeIn('', '', 0.1, 1)}
+          className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+        >
+          I am a driven and results-oriented professional with expertise in Machine Learning, Software Development, Data Analysis, and AI. With a passion for solving complex problems through innovative technology, I specialize in developing and deploying scalable machine learning models, building robust software applications, and extracting actionable insights from data to drive informed decision-making.
 
-      <div className="mt-20 flex flex-wrap gap-10">
-        {services.map((service, index) => (
-          <ServiceCard key={service.title} index={index} {...service} />
-        ))}
+          Throughout my career, I have gained hands-on experience in a variety of domains, including deep learning, data analytics, and AI-powered solutions, using tools such as Python, TensorFlow, PyTorch, and scikit-learn. I am adept at building data pipelines, performing advanced data analysis, and utilizing AI to create intelligent applications that solve real-world challenges, from predictive analytics to computer vision and natural language processing.
+
+          In software development, I focus on creating clean, efficient code and building robust, maintainable applications. I’m well-versed in best practices for software architecture and testing, ensuring that my solutions are both high-performing and scalable.
+
+          I thrive in collaborative environments where I can leverage my diverse skill set to tackle complex technical problems. My goal is to continue advancing in the fields of AI, Machine Learning, and Data Science, and to contribute to projects that push the boundaries of what technology can achieve.
+        </motion.p>
+
+        <div className="mt-20 flex flex-wrap gap-10">
+          {servicesData.map((service, index) => (
+            <ServiceCard key={service.title} index={index} {...service} />
+          ))}
+        </div>
       </div>
     </section>
   );
