@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const technologies = [
   { name: 'Python', icon: '🐍', category: 'Languages' },
@@ -27,36 +27,133 @@ const TechCard = ({ name, icon, category, isSelected }) => {
       animate={{ opacity: 1, y: 0 }}
       className={`relative group cursor-pointer ${isSelected ? 'z-10' : ''}`}
     >
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-300" />
-      <div className={`relative flex flex-col items-center p-6 rounded-2xl backdrop-blur-sm border border-gray-800/50 transition-all duration-300 ${
-        isSelected 
-          ? 'bg-gray-800/80 border-indigo-500/50' 
-          : 'bg-gray-900/50 hover:bg-gray-800/50'
-      }`}>
-        <div className="text-3xl mb-3">{icon}</div>
-        <h3 className="text-sm font-medium text-gray-300">{name}</h3>
-        <span className="text-xs text-gray-500 mt-1">{category}</span>
-      </div>
+      <motion.div 
+        className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-300"
+        animate={{
+          background: isSelected 
+            ? 'linear-gradient(to right, rgb(99, 102, 241), rgb(168, 85, 247))'
+            : 'linear-gradient(to right, rgb(99, 102, 241), rgb(168, 85, 247))',
+        }}
+      />
+      <motion.div 
+        className={`relative flex flex-col items-center p-6 rounded-2xl backdrop-blur-sm border transition-all duration-300 ${
+          isSelected 
+            ? 'bg-gray-800/80 border-indigo-500/50' 
+            : 'bg-gray-900/50 hover:bg-gray-800/50 border-gray-800/50'
+        }`}
+        animate={{
+          y: isSelected ? -5 : 0,
+          boxShadow: isSelected 
+            ? '0 20px 25px -5px rgba(99, 102, 241, 0.1), 0 10px 10px -5px rgba(168, 85, 247, 0.1)'
+            : '0 0 0 0 rgba(0, 0, 0, 0)',
+        }}
+      >
+        <motion.div 
+          className="text-3xl mb-3"
+          animate={{ scale: isSelected ? 1.1 : 1 }}
+          whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+          transition={{ duration: 0.5 }}
+        >
+          {icon}
+        </motion.div>
+        <motion.h3 
+          className="text-sm font-medium text-gray-300"
+          animate={{ color: isSelected ? '#fff' : '#d1d5db' }}
+        >
+          {name}
+        </motion.h3>
+        <motion.span 
+          className="text-xs text-gray-500 mt-1"
+          animate={{ color: isSelected ? '#a5b4fc' : '#6b7280' }}
+        >
+          {category}
+        </motion.span>
+      </motion.div>
     </motion.div>
+  );
+};
+
+const BackgroundAnimation = () => {
+  return (
+    <motion.div 
+      className="absolute inset-0"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <motion.div 
+        className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.15),transparent_70%)]"
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.15, 0.2, 0.15],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          repeatType: "reverse"
+        }}
+      />
+      <motion.div 
+        className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(167,139,250,0.15),transparent_70%)]"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.15, 0.25, 0.15],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          repeatType: "reverse"
+        }}
+      />
+    </motion.div>
+  );
+};
+
+const CategoryButton = ({ category, isSelected, onClick }) => {
+  return (
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={onClick}
+      className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+        isSelected ? 'text-white' : 'text-gray-400 hover:text-white'
+      }`}
+    >
+      {isSelected && (
+        <motion.div
+          layoutId="activeCategory"
+          className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg"
+          initial={false}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        />
+      )}
+      <span className="relative z-10">{category}</span>
+    </motion.button>
   );
 };
 
 const Tech = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [isVisible, setIsVisible] = useState(false);
   
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   const filteredTech = selectedCategory === 'all' 
     ? technologies 
     : technologies.filter(tech => tech.category === selectedCategory);
 
   return (
     <section className="relative min-h-screen bg-[#030712] py-24 px-6 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.15),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(167,139,250,0.15),transparent_70%)]" />
-      </div>
+      <BackgroundAnimation />
 
-      <div className="max-w-7xl mx-auto space-y-16 relative z-10">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isVisible ? 1 : 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-7xl mx-auto space-y-16 relative z-10"
+      >
         <div className="text-center space-y-4">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -75,66 +172,62 @@ const Tech = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold"
           >
-            <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+            <motion.span 
+              className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent inline-block"
+              whileHover={{ scale: 1.02 }}
+            >
               Tech Stack
-            </span>
+            </motion.span>
           </motion.h2>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+        <motion.div 
+          className="flex flex-wrap justify-center gap-4 mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <CategoryButton
+            category="All"
+            isSelected={selectedCategory === 'all'}
             onClick={() => setSelectedCategory('all')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              selectedCategory === 'all'
-                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white'
-                : 'text-gray-400 hover:text-white'
-            }`}
-          >
-            All
-          </motion.button>
+          />
           {categories.map((category) => (
-            <motion.button
+            <CategoryButton
               key={category}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              category={category}
+              isSelected={selectedCategory === category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                selectedCategory === category
-                  ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              {category}
-            </motion.button>
+            />
           ))}
-        </div>
+        </motion.div>
 
         <motion.div 
           layout
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6"
         >
-          {filteredTech.map((tech, index) => (
-            <motion.div
-              key={tech.name}
-              layout
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{
-                duration: 0.3,
-                delay: index * 0.05,
-              }}
-            >
-              <TechCard
-                {...tech}
-                isSelected={selectedCategory === tech.category}
-              />
-            </motion.div>
-          ))}
+          <AnimatePresence mode="wait">
+            {filteredTech.map((tech, index) => (
+              <motion.div
+                key={tech.name}
+                layout
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{
+                  duration: 0.3,
+                  delay: index * 0.05,
+                }}
+              >
+                <TechCard
+                  {...tech}
+                  isSelected={selectedCategory === tech.category}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };
