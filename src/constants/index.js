@@ -53,7 +53,7 @@ const services = [
     icon: frontend,
   },
   {
-    title: 'Entreprenuer',
+    title: 'Entrepreneur',
     icon: creator,
   },
 ];
@@ -117,10 +117,10 @@ const experiences = [
     iconBg: '#383E56',
     date: 'March 2019 - April 2021',
     points: [
-      'Developing and executing the overall business strategy for the poultry farm and transportation business. ',
+      'Developing and executing the overall business strategy for the poultry farm and transportation business.',
       'Overseeing the management, maintenance, and scheduling of the truck fleet to ensure the safe and timely transportation of goods while minimizing downtime and maximizing operational efficiency.',
-      'Overseeing the procurement of feed, equipment, vaccines, and other necessary resources for the farms operations.',
-      'Monitoring industry trends, consumer preferences, and market demands to adapt the company offerings accordingly. This includes identifying potential opportunities for growth.',
+      'Overseeing the procurement of feed, equipment, vaccines, and other necessary resources for the farm\'s operations.',
+      'Monitoring industry trends, consumer preferences, and market demands to adapt the company offerings accordingly.',
       'Overseeing day-to-day operations of the farm, including production, breeding, feed management, health monitoring, and biosecurity measures to ensure the well-being of the poultry.',
     ],
   },
@@ -131,11 +131,11 @@ const experiences = [
     iconBg: '#E6DEDD',
     date: 'May 2022 - Jan 2023',
     points: [
-      'Evaluated and processed property damage insurance claims using Xactimate software, accurately estimating costs for repairs and replacements. ',
+      'Evaluated and processed property damage insurance claims using Xactimate software, accurately estimating costs for repairs and replacements.',
       'Utilized Xactimate to create detailed digital sketches and floor plans, capturing the scope of work and dimensions of damaged areas.',
-      'Entered line items for various repair tasks in Xactimate, considering material quantities and labor costs to generate comprehensive estimates. ',
-      'Demonstrated proficiency in navigating the Xactimate database, selecting appropriate materials, and incorporating current market rates into estimates. ',
-      'Collaborated 	with 	insurance 	adjusters, 	contractors, 	and policyholders to ensure accurate and fair assessments of house damage. ',
+      'Entered line items for various repair tasks in Xactimate, considering material quantities and labor costs to generate comprehensive estimates.',
+      'Demonstrated proficiency in navigating the Xactimate database, selecting appropriate materials, and incorporating current market rates into estimates.',
+      'Collaborated with insurance adjusters, contractors, and policyholders to ensure accurate and fair assessments of house damage.',
     ],
   },
   {
@@ -145,12 +145,12 @@ const experiences = [
     iconBg: '#383E56',
     date: 'Sept 2022 - Jan 2023',
     points: [
-      'Collaborated with a team of developers to create and maintain user-friendly and responsive web applications.  ',
-      'Implemented frontend code using HTML, CSS, and JavaScript, ensuring cross-browser compatibility and responsiveness.  ',
-      'Participated in code reviews, providing, and receiving constructive feedback to enhance coding skills and adherence to best practices. ',
-      'Actively learned and implement the latest frontend development trends, technologies, and best practices.  ',
-      'Utilized version control systems (e.g., Git) to manage code repositories and collaborate effectively with team members. ',
-      'Assisted in troubleshooting and resolving frontend-related issues encountered during development or in production.  ',
+      'Collaborated with a team of developers to create and maintain user-friendly and responsive web applications.',
+      'Implemented frontend code using HTML, CSS, and JavaScript, ensuring cross-browser compatibility and responsiveness.',
+      'Participated in code reviews, providing and receiving constructive feedback to enhance coding skills and adherence to best practices.',
+      'Actively learned and implemented the latest frontend development trends, technologies, and best practices.',
+      'Utilized version control systems (e.g., Git) to manage code repositories and collaborate effectively with team members.',
+      'Assisted in troubleshooting and resolving frontend-related issues encountered during development or in production.',
     ],
   },
   {
@@ -160,17 +160,16 @@ const experiences = [
     iconBg: '#E6DEDD',
     date: 'Oct 2023 - Nov 2023',
     points: [
-      'Used JP Morgan Chase’s open-source library called Perspective to generate a live graph that displays a data feed in a clear and visually appealing way for traders to monitor. ',
-      'Set up a local dev environment by downloading the necessary files, tools and dependencies.',
-      'Fixed broken files in the repository to make web application output correctly. ',
+      'Used JP Morgan Chase’s open-source library called Perspective to generate a live graph that displays a data feed in a clear and visually appealing way for traders to monitor.',
+      'Set up a local dev environment by downloading the necessary files, tools, and dependencies.',
+      'Fixed broken files in the repository to make the web application output correctly.',
     ],
   },
 ];
 
 const testimonials = [
   {
-    testimonial:
-      'I thought it was impossible to make a website as beautiful as our product, but Olawale proved me wrong.',
+    testimonial: 'I thought it was impossible to make a website as beautiful as our product, but Olawale proved me wrong.',
     name: 'Marsaun Cook',
     designation: 'CEO',
     company: 'Cooks Corner',
@@ -178,8 +177,7 @@ const testimonials = [
       'https://media.licdn.com/dms/image/v2/D5603AQG767vyQ7yW6Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1706229493138?e=1739404800&v=beta&t=4bhXWHFuADG1bDF7rQn3JmLw8LPxgpR5tk7VQxK0Y5I',
   },
   {
-    testimonial:
-      "After Olawale optimized our website, our traffic increased by 50%. We can't thank them enough!",
+    testimonial: "After Olawale optimized our website, our traffic increased by 50%. We can't thank them enough!",
     name: 'Lisa Wang',
     designation: 'CTO',
     company: '456 Enterprises',
@@ -194,16 +192,16 @@ const projects = [
       'An AI-powered platform that uses computer vision to generate accurate body measurements from images. The system helps fashion designers, retailers, and e-commerce platforms by providing reliable and automated body measurements for custom clothing.',
     tags: [
       {
-        name: 'react',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'threejs',
+        name: 'python',
         color: 'green-text-gradient',
       },
       {
-        name: 'tailwind',
-        color: 'pink-text-gradient',
+        name: 'machine-learning',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'AI',
+        color: 'purple-text-gradient',
       },
       {
         name: 'tensorflow',
@@ -214,48 +212,143 @@ const projects = [
     source_code_link: 'https://github.com/your-username/ai-body-measurement-generator',
   },
   {
-    name: 'Metaverse',
+    name: 'Data Management System',
     description:
-      'Web article that talks about importance of metaverse and it usefullness. It shows the imaginary of how the metaverse operate aswell .',
+      'A comprehensive data management system that integrates machine learning models to automate data classification, cleaning, and visualization. This system is designed for businesses to manage large datasets efficiently and make data-driven decisions.',
     tags: [
       {
-        name: 'next',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'react',
+        name: 'python',
         color: 'green-text-gradient',
       },
       {
-        name: 'tailwind',
-        color: 'pink-text-gradient',
+        name: 'django',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'postgresql',
+        color: 'red-text-gradient',
+      },
+      {
+        name: 'AI',
+        color: 'purple-text-gradient',
       },
     ],
-    image: metaverse,
-    source_code_link: 'https://github.com/walex4242/metaverse',
+    image: '/path/to/data-management-system.jpg',
+    source_code_link: 'https://github.com/your-username/data-management-system',
   },
   {
-    name: 'Dalle-Project',
+    name: 'AI Fashion Design Models',
     description:
-      'A web application that allow users to generate image through the help of Ai and also share with the community.',
+      'An AI-driven fashion design platform that allows users to create fashion designs by applying AI models for predicting trends, generating clothing designs, and visualizing them on virtual mannequins. The platform uses GANs (Generative Adversarial Networks) to produce unique fashion pieces.',
     tags: [
       {
-        name: 'react',
+        name: 'python',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'tensorflow',
+        color: 'yellow-text-gradient',
+      },
+      {
+        name: 'AI',
+        color: 'purple-text-gradient',
+      },
+      {
+        name: 'fashion-tech',
+        color: 'blue-text-gradient',
+      },
+    ],
+    image: '/path/to/ai-fashion-design.jpg',
+    source_code_link: 'https://github.com/your-username/ai-fashion-design-models',
+  },
+  {
+    name: 'Predictive Analytics for Fashion Trends',
+    description:
+      'Developed a predictive model using machine learning to forecast upcoming fashion trends based on historical data, social media analysis, and market signals. This model helps designers and retailers stay ahead of trends.',
+    tags: [
+      {
+        name: 'python',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'machine-learning',
         color: 'blue-text-gradient',
       },
       {
-        name: 'mongodb',
+        name: 'data-analysis',
+        color: 'yellow-text-gradient',
+      },
+    ],
+    image: '/path/to/fashion-trends.jpg',
+    source_code_link: 'https://github.com/your-username/fashion-trends-predictor',
+  },
+  {
+    name: 'AI Fashion Design Project',
+    description:
+      'An innovative project built with React, Three.js, and Tailwind that integrates AI-driven fashion design and visualization for a better user experience.',
+    tags: [
+      {
+        name: 'React',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'Threejs',
         color: 'green-text-gradient',
+      },
+      {
+        name: 'Tailwind',
+        color: 'pink-text-gradient',
       },
       {
         name: 'vite',
         color: 'yellow-text-gradient',
       },
     ],
-    image: dalle,
-    source_code_link: 'https://github.com/walex4242/Dall-Eproject',
+    image: threejs1,
+    source_code_link: 'https://github.com/walex4242/ThreeJs_Project_Ai',
+  },
+  {
+    name: 'GodHeranca',
+    description:
+      'GodHeranca" is a Next.js-based web app where users can add items to their cart, enter their information, and be redirected to WhatsApp to complete their order.',
+    tags: [
+      {
+        name: 'Nextjs',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'TypeScript',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'Tailwind',
+        color: 'pink-text-gradient',
+      },
+    ],
+    image: godheranca,
+    source_code_link: 'https://github.com/walex4242/godherancafrontendweb',
+  },
+  {
+    name: 'GodHeranca Dashboard',
+    description:
+      'The "GodHeranca Dashboard" frontend, built with Next.js, lets supermarkets manage accounts, upload products, and track inventory. Products are displayed on the "GodHeranca" web app for user purchases.',
+    tags: [
+      {
+        name: 'Tailwind',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'TypeScript',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'NextJs',
+        color: 'yellow-text-gradient',
+      },
+    ],
+    image: dashboard,
+    source_code_link: 'https://github.com/walex4242/godherancadashboardfrontend',
   },
 ];
-
 
 export { services, technologies, experiences, testimonials, projects };

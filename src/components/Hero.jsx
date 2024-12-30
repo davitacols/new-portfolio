@@ -1,182 +1,217 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import * as THREE from 'three';
 import { motion } from 'framer-motion';
 
-const FloatingParticles = () => (
-  <div className="absolute inset-0 overflow-hidden">
-    {[...Array(30)].map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute h-1 w-1 bg-gradient-to-tr from-blue-400 to-purple-400 rounded-full"
-        style={{
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-        }}
-        animate={{
-          y: [0, Math.random() * 100 - 50],
-          opacity: [0.2, 0.5, 0.2],
-        }}
-        transition={{
-          duration: Math.random() * 3 + 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-    ))}
-  </div>
-);
+const ThreeBackground = () => {
+  const mountRef = useRef(null);
 
-const Hero = () => {
-  const specialties = [
-    {
-      title: "Machine Learning Specialist",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <circle cx="12" cy="12" r="3"/>
-          <path d="M12 3a9 9 0 0 0-9 9 9 9 0 0 0 9 9 9 9 0 0 0 9-9 9 9 0 0 0-9-9M3.6 9h16.8M3.6 15h16.8"/>
-        </svg>
-      ),
-      description: "Developing intelligent solutions with AI"
-    },
-    {
-      title: "Software Developer",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <polyline points="16 18 22 12 16 6"/>
-          <polyline points="8 6 2 12 8 18"/>
-        </svg>
-      ),
-      description: "Building robust applications"
-    },
-    {
-      title: "Data Analyst",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M21 3H3v18h18V3z"/>
-          <path d="M21 9H3M21 15H3M9 21V3M15 21V3"/>
-        </svg>
-      ),
-      description: "Extracting insights from data"
+  useEffect(() => {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    
+    const setSize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+
+    setSize();
+    mountRef.current.appendChild(renderer.domElement);
+
+    // Create animated particles
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = Math.min(2000, Math.floor(window.innerWidth * window.innerHeight / 1000));
+    const posArray = new Float32Array(particlesCount * 3);
+
+    for(let i = 0; i < particlesCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 5;
     }
+
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 0.005,
+      color: '#4F46E5',
+      transparent: true,
+      opacity: 0.8,
+    });
+
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+
+    camera.position.z = 3;
+
+    const animate = () => {
+      requestAnimationFrame(animate);
+      particlesMesh.rotation.y += 0.001;
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    const handleResize = () => {
+      setSize();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      mountRef.current?.removeChild(renderer.domElement);
+    };
+  }, []);
+
+  return <div ref={mountRef} className="absolute inset-0 -z-10" />;
+};
+
+const TechStack = () => {
+  const technologies = [
+    { name: 'Python', level: 95 },
+    { name: 'TensorFlow', level: 90 },
+    { name: 'React', level: 88 },
+    { name: 'AWS', level: 85 },
   ];
 
   return (
-    <section className="relative min-h-screen bg-[#0A0F1C]">
-      <FloatingParticles />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1C] via-[#1a1f2c] to-[#0A0F1C] opacity-80" />
+    <div className="space-y-6 w-full max-w-xl">
+      {technologies.map((tech) => (
+        <div key={tech.name} className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-sm font-medium text-gray-300">{tech.name}</span>
+            <span className="text-sm font-medium text-gray-400">{tech.level}%</span>
+          </div>
+          <div className="h-2 w-full bg-gray-700/50 rounded-full overflow-hidden">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${tech.level}%` }}
+              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+              className="h-full bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const Hero = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const achievements = [
+    { number: "50+", label: "Projects Completed" },
+    { number: "30+", label: "ML Models Deployed" },
+    { number: "99%", label: "Client Satisfaction" },
+    { number: "15+", label: "Industry Awards" }
+  ];
+
+  return (
+    <section className="relative min-h-screen bg-gradient-to-b from-[#030712] to-[#0F172A] overflow-hidden">
+      <ThreeBackground />
       
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(56,189,248,0.03),transparent_70%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030712]/80 to-[#030712]" />
 
       <div className="max-w-7xl mx-auto px-6 pt-32 pb-16 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-10">
-            <div className="space-y-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="inline-block"
-              >
-                <h1 className="text-6xl font-bold">
-                  <span className="text-white">Hi, I'm </span>
-                  <span className="bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
-                    David Ansa
+          <div className="space-y-12">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6"
+            >
+              <div className="inline-block">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="px-4 py-2 rounded-full bg-gradient-to-r from-indigo-600/10 to-purple-600/10 border border-indigo-500/20 mb-6"
+                >
+                  <span className="text-indigo-400 text-sm">Available for freelance work</span>
+                </motion.div>
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight">
+                  <span className="text-white">Transforming Ideas with </span>
+                  <span className="bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">
+                    AI & Code
                   </span>
                 </h1>
-              </motion.div>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-xl text-gray-400 font-light"
-              >
-                Transforming data into intelligence, code into solutions.
-              </motion.p>
-            </div>
+              </div>
+              <p className="text-lg md:text-xl text-gray-400 font-light max-w-xl">
+                Specializing in machine learning solutions, full-stack development, and data-driven innovation. 
+                Let's build something extraordinary together.
+              </p>
+            </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="grid gap-4"
+              animate={{ opacity: isVisible ? 1 : 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6"
             >
-              {specialties.map((specialty, index) => (
-                <motion.div
-                  key={specialty.title}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 * (index + 3) }}
-                  className="group relative"
-                >
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl blur opacity-0 group-hover:opacity-30 transition duration-500"></div>
-                  <div className="relative flex items-center gap-4 bg-[#1a1f2c]/80 p-6 rounded-xl backdrop-blur-sm border border-gray-800/50">
-                    <div className="text-blue-400 group-hover:text-blue-300 transition-colors">
-                      {specialty.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-white font-medium mb-1">{specialty.title}</h3>
-                      <p className="text-gray-400 text-sm">{specialty.description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+              <button className="px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium hover:opacity-90 transition-opacity">
+                View Projects
+              </button>
+              <button className="px-6 sm:px-8 py-3 sm:py-4 rounded-lg border border-gray-700 text-white font-medium hover:bg-gray-800/50 transition-colors">
+                Contact Me
+              </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <h3 className="text-white font-medium mb-6">Technical Expertise</h3>
+              <TechStack />
             </motion.div>
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 50 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="relative hidden lg:block"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl blur-3xl"></div>
-            <div className="relative bg-[#1a1f2c]/50 rounded-2xl p-8 backdrop-blur-sm border border-gray-800/50">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-3xl blur-3xl"></div>
+            <div className="relative bg-[#0F1629]/40 rounded-3xl p-8 backdrop-blur-xl border border-gray-800/50 shadow-2xl">
               <pre className="text-sm text-gray-300 font-mono">
-                <code>{`class DataScientist:
+                <code>{`class AIEngineer:
     def __init__(self):
-        self.skills = [
-            "Machine Learning",
-            "Data Analysis",
-            "Software Development"
-        ]
+        self.expertise = {
+            "machine_learning": ["TensorFlow", "PyTorch"],
+            "backend": ["Python", "Node.js"],
+            "frontend": ["React", "Three.js"],
+            "cloud": ["AWS", "GCP"]
+        }
         
-    def solve_problems(self, data):
-        return innovative_solutions`}</code>
+    async def solve_complex_problems(self):
+        solution = await self.innovate()
+        return transform_business(solution)
+        
+    def innovate(self):
+        return "Building the future, one line at a time"`}</code>
               </pre>
             </div>
           </motion.div>
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20"
         >
-          <a 
-            href="#about"
-            className="flex flex-col items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors"
-          >
-            <span className="text-sm font-light">Learn More</span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-6 h-6"
-            >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={1.5} 
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3" 
-                />
-              </svg>
-            </motion.div>
-          </a>
+          {achievements.map((achievement, index) => (
+            <div key={index} className="text-center">
+              <h3 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">
+                {achievement.number}
+              </h3>
+              <p className="text-gray-400 mt-2 text-sm sm:text-base">{achievement.label}</p>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>
@@ -184,3 +219,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

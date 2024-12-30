@@ -1,76 +1,141 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { styles } from '../styles';
-import { SectionWrapper } from '../hoc';
-import { fadeIn, textVariant } from '../utils/motion';
-import { FaBrain, FaCode, FaChartBar, FaRobot } from 'react-icons/fa';
 
-const servicesData = [
+const services = [
   {
     title: "Machine Learning Engineering",
-    icon: <FaBrain className="text-blue-400 w-12 h-12" />,
-    description: "Developing and deploying scalable ML models using TensorFlow, PyTorch, and scikit-learn. Specializing in deep learning and neural networks."
+    icon: "🤖",
+    description: "Developing and deploying scalable ML models using TensorFlow, PyTorch, and scikit-learn. Specializing in deep learning and neural networks.",
+    gradient: "from-blue-500 to-cyan-500",
+    skills: ["TensorFlow", "PyTorch", "scikit-learn"]
   },
   {
     title: "Software Development",
-    icon: <FaCode className="text-green-400 w-12 h-12" />,
-    description: "Building robust applications with Python, focusing on clean architecture, testing, and maintainable code practices."
+    icon: "💻",
+    description: "Building robust applications with Python, focusing on clean architecture, testing, and maintainable code practices.",
+    gradient: "from-emerald-500 to-green-500",
+    skills: ["Python", "React", "Node.js"]
   },
   {
     title: "Data Analysis",
-    icon: <FaChartBar className="text-yellow-400 w-12 h-12" />,
-    description: "Performing complex data analysis using Python, SQL, and visualization tools. Extracting actionable insights from large datasets."
+    icon: "📊",
+    description: "Performing complex data analysis using Python, SQL, and visualization tools. Extracting actionable insights from large datasets.",
+    gradient: "from-amber-500 to-orange-500",
+    skills: ["Pandas", "SQL", "Tableau"]
   },
   {
     title: "AI Solutions",
-    icon: <FaRobot className="text-purple-400 w-12 h-12" />,
-    description: "Creating AI-powered solutions for real-world problems, including computer vision, NLP, and predictive analytics."
+    icon: "🎯",
+    description: "Creating AI-powered solutions for real-world problems, including computer vision, NLP, and predictive analytics.",
+    gradient: "from-purple-500 to-pink-500",
+    skills: ["Computer Vision", "NLP", "Analytics"]
   }
 ];
 
-const ServiceCard = ({ index, title, icon, description }) => (
-  <motion.div
-    variants={fadeIn("up", "spring", index * 0.3, 0.75)}
-    className="flex flex-col items-center bg-[#1a1f2c] border border-gray-800 rounded-lg shadow-lg p-6 hover:scale-105 transition-transform duration-300"
-  >
-    <div className="w-20 h-20 flex items-center justify-center bg-blue-500/20 rounded-full mb-4">
-      {icon}
-    </div>
-    <h3 className="text-white text-lg font-semibold mb-2">{title}</h3>
-    <p className="text-gray-400 text-sm text-center">{description}</p>
-  </motion.div>
-);
+const ServiceCard = ({ title, description, gradient, icon, skills, index }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      <div className="group relative p-8 rounded-2xl bg-gray-900/50 hover:bg-gray-800/50 backdrop-blur-lg border border-gray-800/50 transition-all duration-300">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        
+        <div className="relative space-y-6">
+          <div className="flex items-center gap-4">
+            <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} p-0.5`}>
+              <div className="w-full h-full bg-gray-900 rounded-xl flex items-center justify-center text-2xl">
+                {icon}
+              </div>
+            </div>
+            <h3 className="text-xl font-semibold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              {title}
+            </h3>
+          </div>
+
+          <p className="text-gray-400 text-sm leading-relaxed">
+            {description}
+          </p>
+
+          <div className="flex flex-wrap gap-2">
+            {skills.map((skill) => (
+              <span
+                key={skill}
+                className={`px-3 py-1 text-xs rounded-full bg-gradient-to-r ${gradient} text-white/90 font-medium`}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const About = () => {
   return (
-    <section className="relative z-0 bg-[#0A0F1C] py-16 px-6">
-      <div className="container mx-auto">
-        <motion.div variants={textVariant()} className="text-center">
-          <p className="text-blue-400 text-sm uppercase tracking-wider mb-2">Introduction</p>
-          <h2 className="text-white font-black text-3xl sm:text-4xl md:text-5xl">Overview</h2>
-        </motion.div>
+    <section className="relative min-h-screen bg-[#030712] py-24 px-6 overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(168,85,247,0.1),transparent_50%)]" />
+      </div>
+      
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="max-w-7xl mx-auto space-y-16 relative z-10"
+      >
+        <div className="text-center space-y-4">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-sm font-medium text-blue-400 border border-blue-500/10"
+          >
+            Introduction
+          </motion.span>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold"
+          >
+            <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+              Crafting Digital Solutions
+            </span>
+          </motion.h2>
+        </div>
 
         <motion.p
-          variants={fadeIn('', '', 0.1, 1)}
-          className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto text-center"
         >
-          I am a driven and results-oriented professional with expertise in Machine Learning, Software Development, Data Analysis, and AI. With a passion for solving complex problems through innovative technology, I specialize in developing and deploying scalable machine learning models, building robust software applications, and extracting actionable insights from data to drive informed decision-making.
-
-          Throughout my career, I have gained hands-on experience in a variety of domains, including deep learning, data analytics, and AI-powered solutions, using tools such as Python, TensorFlow, PyTorch, and scikit-learn. I am adept at building data pipelines, performing advanced data analysis, and utilizing AI to create intelligent applications that solve real-world challenges, from predictive analytics to computer vision and natural language processing.
-
-          In software development, I focus on creating clean, efficient code and building robust, maintainable applications. I’m well-versed in best practices for software architecture and testing, ensuring that my solutions are both high-performing and scalable.
-
-          I thrive in collaborative environments where I can leverage my diverse skill set to tackle complex technical problems. My goal is to continue advancing in the fields of AI, Machine Learning, and Data Science, and to contribute to projects that push the boundaries of what technology can achieve.
+          Experienced Machine Learning Engineer and Software Developer with a passion for creating
+          innovative AI solutions. Leveraging cutting-edge technologies to transform complex
+          challenges into elegant, efficient solutions. Committed to excellence in code quality
+          and system architecture.
         </motion.p>
 
-        <div className="mt-20 flex flex-wrap gap-10">
-          {servicesData.map((service, index) => (
-            <ServiceCard key={service.title} index={index} {...service} />
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          {services.map((service, index) => (
+            <ServiceCard key={service.title} {...service} index={index} />
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
 
-export default SectionWrapper(About, "about");
+export default About;
