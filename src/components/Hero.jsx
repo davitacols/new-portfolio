@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const ThreeBackground = () => {
   const mountRef = useRef(null);
@@ -153,9 +154,82 @@ const TechStack = () => {
   );
 };
 
+const SocialLinks = () => {
+  const socialLinks = [
+    { icon: FaGithub, url: 'https://github.com/davitacols' },
+    { icon: FaLinkedin, url: 'https://linkedin.com/in/davitacols' },
+    { icon: FaTwitter, url: 'https://twitter.com/davitaace' },
+  ];
+
+  return (
+    <div className="flex space-x-4 mt-6">
+      {socialLinks.map((link, index) => (
+        <motion.a
+          key={index}
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="text-gray-400 hover:text-white transition-colors"
+        >
+          <link.icon className="w-6 h-6" />
+        </motion.a>
+      ))}
+    </div>
+  );
+};
+
+const ProjectModal = ({ isOpen, onClose }) => {
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+        >
+          <motion.div
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -50, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-gray-900 p-6 rounded-lg max-w-lg w-full"
+          >
+            <h2 className="text-2xl font-bold text-white mb-4">Latest Projects</h2>
+            <ul className="space-y-4">
+              <li className="text-gray-300">
+                <h3 className="font-medium">AI-Powered Chat Bot</h3>
+                <p className="text-sm text-gray-400">A sophisticated chatbot using GPT-3 for natural conversations.</p>
+              </li>
+              <li className="text-gray-300">
+                <h3 className="font-medium">Blockchain Voting System</h3>
+                <p className="text-sm text-gray-400">Secure and transparent voting system built on Ethereum.</p>
+              </li>
+              <li className="text-gray-300">
+                <h3 className="font-medium">AR Product Visualization</h3>
+                <p className="text-sm text-gray-400">Mobile app for visualizing products in AR using ARKit and React Native.</p>
+              </li>
+            </ul>
+            <button
+              onClick={onClose}
+              className="mt-6 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition-colors"
+            >
+              Close
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { scrollYProgress } = useScroll();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.5], [0, 100]);
@@ -165,10 +239,10 @@ const Hero = () => {
   }, []);
 
   const achievements = [
-    { number: "50+", label: "Projects Completed" },
-    { number: "30+", label: "ML Models Deployed" },
-    { number: "99%", label: "Client Satisfaction" },
-    { number: "15+", label: "Industry Awards" }
+    { number: "100+", label: "Projects Completed" },
+    { number: "50+", label: "ML Models Deployed" },
+    { number: "99.9%", label: "Client Satisfaction" },
+    { number: "25+", label: "Industry Awards" }
   ];
 
   return (
@@ -242,6 +316,7 @@ const Hero = () => {
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => setIsModalOpen(true)}
                 className="px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium hover:opacity-90 transition-opacity"
               >
                 View Projects
@@ -262,6 +337,7 @@ const Hero = () => {
             >
               <h3 className="text-white font-medium mb-6">Technical Expertise</h3>
               <TechStack />
+              <SocialLinks />
             </motion.div>
           </div>
 
@@ -317,9 +393,11 @@ const Hero = () => {
             </motion.div>
           ))}
         </motion.div>
+        <ProjectModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </motion.div>
     </section>
   );
 };
 
 export default Hero;
+
