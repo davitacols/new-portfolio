@@ -20,6 +20,21 @@ const Navbar = () => {
     return 'dark';
   });
 
+  // Resume download handler
+  const handleResumeDownload = () => {
+    // Replace '/path-to-your-resume.pdf' with your actual resume file path
+    const resumeUrl = '/resume.pdf';
+    
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.setAttribute('download', 'David-Resume.pdf'); // Replace with your desired filename
+    link.setAttribute('target', '_blank');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -109,12 +124,13 @@ const Navbar = () => {
               </motion.a>
             ))}
             <motion.button
+              onClick={handleResumeDownload}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               className="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-medium hover:opacity-90 transition-opacity"
             >
-              Resume
+              Download Resume
             </motion.button>
             <motion.button
               initial={{ opacity: 0, y: -20 }}
@@ -189,12 +205,13 @@ const Navbar = () => {
                   </motion.a>
                 ))}
                 <motion.button
+                  onClick={handleResumeDownload}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.3 }}
                   className="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-base font-medium"
                 >
-                  Resume
+                  Download Resume
                 </motion.button>
               </div>
             </motion.div>
@@ -206,4 +223,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

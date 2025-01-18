@@ -168,6 +168,24 @@ const Hero = () => {
   const handleOpenModal = useCallback(() => setIsModalOpen(true), []);
   const handleCloseModal = useCallback(() => setIsModalOpen(false), []);
 
+  const socialLinks = [
+    {
+      Icon: FaGithub,
+      url: "https://github.com/davitacols",
+      label: "GitHub Profile"
+    },
+    {
+      Icon: FaLinkedin,
+      url: "https://linkedin.com/in/davitacols",
+      label: "LinkedIn Profile"
+    },
+    {
+      Icon: FaTwitter,
+      url: "https://twitter.com/davitaace",
+      label: "Twitter Profile"
+    }
+  ];
+
   return (
     <section className="relative min-h-screen bg-gradient-to-b from-[#030712] to-[#0F172A] overflow-hidden">
       <ThreeBackground />
@@ -254,14 +272,16 @@ const Hero = () => {
             </motion.div>
 
             <div className="flex space-x-4">
-              {[FaGithub, FaLinkedin, FaTwitter].map((Icon, index) => (
+              {socialLinks.map(({ Icon, url, label }, index) => (
                 <motion.a
                   key={index}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className="text-gray-400 hover:text-white transition-colors"
-                  href="#"
-                  aria-label={`Social media link ${index + 1}`}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
                 >
                   <Icon className="w-6 h-6" />
                 </motion.a>
@@ -308,4 +328,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
