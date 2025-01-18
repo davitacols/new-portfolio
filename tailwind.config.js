@@ -11,7 +11,7 @@ export default {
         'black-100': '#100d25',
         'black-200': '#090325',
         'white-100': '#f3f3f3',
-        // Add light theme variants
+        // Light theme variants
         'light-primary': '#ffffff',
         'light-secondary': '#f5f5f5',
         'light-tertiary': '#eaeaea',

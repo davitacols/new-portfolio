@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 const navLinks = [
   { id: "about", title: "About" },
@@ -12,6 +13,12 @@ const Navbar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') || 'dark';
+    }
+    return 'dark';
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +34,19 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -34,7 +54,7 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       className={`w-full fixed top-0 z-50 ${
         scrolled 
-          ? 'bg-[#030712]/80 backdrop-blur-lg border-b border-gray-800/50' 
+          ? 'bg-white/80 dark:bg-[#030712]/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800/50' 
           : 'bg-transparent'
       }`}
     >
@@ -54,11 +74,11 @@ const Navbar = () => {
               transition={{ duration: 0.5 }}
               className="flex items-center"
             >
-              <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text">
+              <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 text-transparent bg-clip-text">
                 Ansa
               </span>
               <div className="w-px h-8 bg-gradient-to-b from-indigo-500/50 to-purple-500/50 mx-3 hidden sm:block" />
-              <span className="text-xl md:text-2xl text-gray-300 hidden sm:block">
+              <span className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 hidden sm:block">
                 David
               </span>
             </motion.div>
@@ -74,7 +94,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`relative px-2 py-1 text-sm font-medium transition-colors ${
-                  active === link.title ? 'text-white' : 'text-gray-400 hover:text-white'
+                  active === link.title ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                 }`}
                 onClick={() => setActive(link.title)}
               >
@@ -96,26 +116,41 @@ const Navbar = () => {
             >
               Resume
             </motion.button>
+            <motion.button
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+            >
+              {theme === 'dark' ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+            >
+              {theme === 'dark' ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
+            </button>
             <button
               onClick={() => setToggle(!toggle)}
-              className="p-2 rounded-lg hover:bg-gray-800/50 transition-colors"
+              className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800/50 transition-colors"
             >
               <div className="w-6 flex flex-col gap-1.5">
                 <motion.span
                   animate={toggle ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-                  className="w-full h-0.5 bg-white block transition-transform"
+                  className="w-full h-0.5 bg-gray-700 dark:bg-white block transition-transform"
                 />
                 <motion.span
                   animate={toggle ? { opacity: 0 } : { opacity: 1 }}
-                  className="w-full h-0.5 bg-white block"
+                  className="w-full h-0.5 bg-gray-700 dark:bg-white block"
                 />
                 <motion.span
                   animate={toggle ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-                  className="w-full h-0.5 bg-white block transition-transform"
+                  className="w-full h-0.5 bg-gray-700 dark:bg-white block transition-transform"
                 />
               </div>
             </button>
@@ -146,8 +181,8 @@ const Navbar = () => {
                     }}
                     className={`block px-4 py-2 text-base ${
                       active === link.title 
-                        ? 'text-white bg-gray-800/50 rounded-lg' 
-                        : 'text-gray-400'
+                        ? 'text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800/50 rounded-lg' 
+                        : 'text-gray-600 dark:text-gray-400'
                     }`}
                   >
                     {link.title}
@@ -171,3 +206,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
