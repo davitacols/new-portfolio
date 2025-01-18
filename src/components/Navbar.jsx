@@ -23,7 +23,7 @@ const Navbar = () => {
   // Resume download handler
   const handleResumeDownload = () => {
     // Replace '/path-to-your-resume.pdf' with your actual resume file path
-    const resumeUrl = '/resume.pdf';
+    const resumeUrl = '/Resume.pdf';
     
     // Create a temporary link element
     const link = document.createElement('a');
