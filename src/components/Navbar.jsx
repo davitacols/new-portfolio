@@ -28,7 +28,7 @@ const Navbar = () => {
     // Create a temporary link element
     const link = document.createElement('a');
     link.href = resumeUrl;
-    link.setAttribute('download', 'David-Resume.pdf'); // Replace with your desired filename
+    link.setAttribute('download', 'resume.pdf'); // Replace with your desired filename
     link.setAttribute('target', '_blank');
     document.body.appendChild(link);
     link.click();
