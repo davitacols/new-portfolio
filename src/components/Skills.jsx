@@ -37,11 +37,12 @@ const Skills = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ y: -5, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-[#141414] p-6 rounded-lg border border-[#3d3d3d]/20 hover:border-[#3d3d3d]/40 transition-all duration-300 group"
+              className="bg-[#141414] p-4 sm:p-6 rounded-lg border border-[#3d3d3d]/20 hover:border-[#3d3d3d]/40 transition-all duration-300 group shadow-lg hover:shadow-xl"
             >
-              <h3 className="text-lg font-light text-[#e1e1e1] mb-4 group-hover:text-white transition-colors">{category.title}</h3>
+              <h3 className="text-base sm:text-lg font-light text-[#e1e1e1] mb-3 sm:mb-4 group-hover:text-white transition-colors">{category.title}</h3>
               <div className="space-y-2">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div 

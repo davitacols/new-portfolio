@@ -46,11 +46,12 @@ const AnimatedCounter = ({ number, label, delay }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="text-center group cursor-default"
+      className="text-center group cursor-default p-4 rounded-lg hover:bg-[#1a1a1a]/30 transition-colors"
     >
-      <div className="text-3xl md:text-4xl font-light text-[#e1e1e1] mb-2 group-hover:text-white transition-colors">
+      <div className="text-2xl sm:text-3xl md:text-4xl font-light text-[#e1e1e1] mb-2 group-hover:text-white transition-colors">
         {displayNumber}
       </div>
       <div className="text-[#e1e1e1]/70 text-sm group-hover:text-[#e1e1e1]/90 transition-colors">
