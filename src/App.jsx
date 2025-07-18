@@ -4,7 +4,6 @@ import { Suspense, lazy, useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Loader from './components/Loader';
-import Sidebar from './components/Sidebar';
 import ScrollProgress from './components/ScrollProgress';
 import AnimatedBackground from './components/AnimatedBackground';
 
@@ -37,7 +36,6 @@ const App = () => {
         <AnimatedBackground />
         <div className="relative bg-[#0f0f0f]">
           <Navbar />
-          <Sidebar />
           
           <div>
             <Hero />
