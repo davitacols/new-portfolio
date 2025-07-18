@@ -30,6 +30,14 @@ export const navLinks = [
     title: 'About',
   },
   {
+    id: 'skills',
+    title: 'Skills',
+  },
+  {
+    id: 'services',
+    title: 'Services',
+  },
+  {
     id: 'work',
     title: 'Work',
   },
@@ -45,15 +53,15 @@ const services = [
     icon: web,
   },
   {
-    title: 'React Native Developer',
+    title: 'Software Developer',
     icon: mobile,
   },
   {
-    title: 'Full Stack Developer',
+    title: 'Machine Learning Specialist',
     icon: frontend,
   },
   {
-    title: 'Entrepreneur',
+    title: 'Graphics Designer',
     icon: creator,
   },
 ];
@@ -72,7 +80,7 @@ const technologies = [
     icon: javascript,
   },
   {
-    name: 'TypeScript',
+    name: 'Python',
     icon: typescript,
   },
   {
@@ -80,7 +88,7 @@ const technologies = [
     icon: reactjs,
   },
   {
-    name: 'Redux Toolkit',
+    name: 'Next.js',
     icon: redux,
   },
   {
@@ -96,80 +104,74 @@ const technologies = [
     icon: mongodb,
   },
   {
-    name: 'Three JS',
+    name: 'MySQL',
     icon: threejs,
   },
   {
-    name: 'git',
+    name: 'Git',
     icon: git,
   },
   {
-    name: 'figma',
+    name: 'Express.js',
     icon: figma,
   },
 ];
 
 const experiences = [
   {
-    title: 'Owner or CEO',
-    company_name: 'W World Company Limited',
+    title: 'Lead Software Engineer',
+    company_name: 'JACKISA.COM',
     icon: wlogo,
     iconBg: '#383E56',
-    date: 'March 2019 - April 2021',
+    date: 'May 2024 - Present',
     points: [
-      'Developing and executing the overall business strategy for the poultry farm and transportation business.',
-      'Overseeing the management, maintenance, and scheduling of the truck fleet to ensure the safe and timely transportation of goods while minimizing downtime and maximizing operational efficiency.',
-      'Overseeing the procurement of feed, equipment, vaccines, and other necessary resources for the farm\'s operations.',
-      'Monitoring industry trends, consumer preferences, and market demands to adapt the company offerings accordingly.',
-      'Overseeing day-to-day operations of the farm, including production, breeding, feed management, health monitoring, and biosecurity measures to ensure the well-being of the poultry.',
+      'Engineered and deployed full-stack applications for logistics and transport sectors.',
+      'Oversaw scalable architecture for web/mobile platforms.',
+      'Led development teams in delivering high-performance solutions.',
     ],
   },
   {
-    title: 'Desk Adjuster',
-    company_name: 'Katy Rose Group',
+    title: 'Software Developer',
+    company_name: 'OZ WEARS',
     icon: KRG,
     iconBg: '#E6DEDD',
-    date: 'May 2022 - Jan 2023',
+    date: 'Oct 2017 - Present',
     points: [
-      'Evaluated and processed property damage insurance claims using Xactimate software, accurately estimating costs for repairs and replacements.',
-      'Utilized Xactimate to create detailed digital sketches and floor plans, capturing the scope of work and dimensions of damaged areas.',
-      'Entered line items for various repair tasks in Xactimate, considering material quantities and labor costs to generate comprehensive estimates.',
-      'Demonstrated proficiency in navigating the Xactimate database, selecting appropriate materials, and incorporating current market rates into estimates.',
-      'Collaborated with insurance adjusters, contractors, and policyholders to ensure accurate and fair assessments of house damage.',
+      'Launched accounting and inventory tools, improving efficiency by 97%.',
+      'Modernized the company\'s web and database infrastructure.',
+      'Led technology adoption and mentored junior team members.',
+      'Delivered scalable solutions for business operations.',
     ],
   },
   {
-    title: 'Frontend Developer',
-    company_name: 'Brainnest Consulting',
+    title: 'Technical Official',
+    company_name: 'Ibedmore Resources',
     icon: brainnest,
     iconBg: '#383E56',
-    date: 'Sept 2022 - Jan 2023',
+    date: 'June 2014 - May 2016',
     points: [
-      'Collaborated with a team of developers to create and maintain user-friendly and responsive web applications.',
-      'Implemented frontend code using HTML, CSS, and JavaScript, ensuring cross-browser compatibility and responsiveness.',
-      'Participated in code reviews, providing and receiving constructive feedback to enhance coding skills and adherence to best practices.',
-      'Actively learned and implemented the latest frontend development trends, technologies, and best practices.',
-      'Utilized version control systems (e.g., Git) to manage code repositories and collaborate effectively with team members.',
-      'Assisted in troubleshooting and resolving frontend-related issues encountered during development or in production.',
+      'Managed IT operations and built software tools as the sole IT staff.',
+      'Implemented technical solutions to improve operational efficiency.',
+      'Provided technical support and system maintenance.',
     ],
   },
   {
-    title: 'Software Engineering Virtual Experience',
-    company_name: 'J.P. Morgan',
+    title: 'Software Engineer',
+    company_name: 'Royalline Tech',
     icon: jpmorgan,
     iconBg: '#E6DEDD',
-    date: 'Oct 2023 - Nov 2023',
+    date: 'Oct 2010 - Dec 2014',
     points: [
-      'Used JP Morgan Chase’s open-source library called Perspective to generate a live graph that displays a data feed in a clear and visually appealing way for traders to monitor.',
-      'Set up a local dev environment by downloading the necessary files, tools, and dependencies.',
-      'Fixed broken files in the repository to make the web application output correctly.',
+      'Delivered scalable internal platforms and handled technical troubleshooting.',
+      'Developed software solutions for various business requirements.',
+      'Collaborated with teams to implement technical best practices.',
     ],
   },
 ];
 
 const testimonials = [
   {
-    testimonial: 'I thought it was impossible to make a website as beautiful as our product, but Olawale proved me wrong.',
+    testimonial: 'I thought it was impossible to make a website as beautiful as our product, but David proved me wrong.',
     name: 'Marsaun Cook',
     designation: 'CEO',
     company: 'Cooks Corner',
@@ -177,7 +179,7 @@ const testimonials = [
       'https://media.licdn.com/dms/image/v2/D5603AQG767vyQ7yW6Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1706229493138?e=1739404800&v=beta&t=4bhXWHFuADG1bDF7rQn3JmLw8LPxgpR5tk7VQxK0Y5I',
   },
   {
-    testimonial: "After Olawale optimized our website, our traffic increased by 50%. We can't thank them enough!",
+    testimonial: "After David optimized our website, our traffic increased by 50%. We can't thank them enough!",
     name: 'Lisa Wang',
     designation: 'CTO',
     company: '456 Enterprises',
@@ -187,168 +189,180 @@ const testimonials = [
 
 const projects = [
   {
-    name: 'AI Body Measurement Generator',
+    name: 'OZ WEARS Inventory System',
     description:
-      'An AI-powered platform that uses computer vision to generate accurate body measurements from images. The system helps fashion designers, retailers, and e-commerce platforms by providing reliable and automated body measurements for custom clothing.',
+      'Built comprehensive accounting and inventory management system that improved operational efficiency by 97%. Features real-time tracking and automated reporting.',
     tags: [
       {
-        name: 'python',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'machine-learning',
+        name: 'javascript',
         color: 'blue-text-gradient',
       },
       {
-        name: 'AI',
-        color: 'purple-text-gradient',
+        name: 'mysql',
+        color: 'green-text-gradient',
       },
       {
-        name: 'tensorflow',
+        name: 'inventory',
+        color: 'pink-text-gradient',
+      },
+    ],
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
+    source_code_link: 'https://github.com/davitacols/oz-wears-inventory',
+  },
+  {
+    name: 'JACKISA Logistics Platform',
+    description:
+      'Engineered full-stack web application for logistics and transport management. Handles route optimization, fleet tracking, and customer management.',
+    tags: [
+      {
+        name: 'react',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'nodejs',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'mongodb',
         color: 'yellow-text-gradient',
       },
     ],
-    image: '/path/to/ai-body-measurement.jpg',
-    source_code_link: 'https://github.com/your-username/ai-body-measurement-generator',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&h=300&fit=crop',
+    source_code_link: 'https://github.com/davitacols/jackisa-logistics',
   },
   {
-    name: 'Data Management System',
+    name: 'Assurance Furniture Website',
     description:
-      'A comprehensive data management system that integrates machine learning models to automate data classification, cleaning, and visualization. This system is designed for businesses to manage large datasets efficiently and make data-driven decisions.',
+      'Created responsive furniture showcase website with CMS integration. Trained staff on content management and SEO best practices.',
+    tags: [
+      {
+        name: 'html',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'css',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'cms',
+        color: 'pink-text-gradient',
+      },
+    ],
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=300&fit=crop',
+    source_code_link: 'https://github.com/davitacols/assurance-furniture',
+  },
+  {
+    name: 'Royalline Tech Internal Platform',
+    description:
+      'Developed scalable internal platform for project management and team collaboration. Implemented automated workflows and reporting systems.',
+    tags: [
+      {
+        name: 'php',
+        color: 'purple-text-gradient',
+      },
+      {
+        name: 'mysql',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'workflow',
+        color: 'blue-text-gradient',
+      },
+    ],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
+    source_code_link: 'https://github.com/davitacols/royalline-platform',
+  },
+  {
+    name: 'Ibedmore IT Management System',
+    description:
+      'Built comprehensive IT operations management system as sole IT staff. Automated system maintenance, user management, and technical support workflows.',
     tags: [
       {
         name: 'python',
         color: 'green-text-gradient',
       },
       {
-        name: 'django',
+        name: 'automation',
         color: 'blue-text-gradient',
       },
       {
-        name: 'postgresql',
+        name: 'system-admin',
         color: 'red-text-gradient',
       },
-      {
-        name: 'AI',
-        color: 'purple-text-gradient',
-      },
     ],
-    image: '/path/to/data-management-system.jpg',
-    source_code_link: 'https://github.com/your-username/data-management-system',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop',
+    source_code_link: 'https://github.com/davitacols/ibedmore-it-system',
   },
   {
-    name: 'AI Fashion Design Models',
+    name: 'YouTube Coding Tutorials',
     description:
-      'An AI-driven fashion design platform that allows users to create fashion designs by applying AI models for predicting trends, generating clothing designs, and visualizing them on virtual mannequins. The platform uses GANs (Generative Adversarial Networks) to produce unique fashion pieces.',
+      'Created educational content series teaching HTML, CSS, and JavaScript fundamentals. Mentored aspiring developers through live coding sessions.',
     tags: [
       {
-        name: 'python',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'tensorflow',
-        color: 'yellow-text-gradient',
-      },
-      {
-        name: 'AI',
-        color: 'purple-text-gradient',
-      },
-      {
-        name: 'fashion-tech',
-        color: 'blue-text-gradient',
-      },
-    ],
-    image: '/path/to/ai-fashion-design.jpg',
-    source_code_link: 'https://github.com/your-username/ai-fashion-design-models',
-  },
-  {
-    name: 'Predictive Analytics for Fashion Trends',
-    description:
-      'Developed a predictive model using machine learning to forecast upcoming fashion trends based on historical data, social media analysis, and market signals. This model helps designers and retailers stay ahead of trends.',
-    tags: [
-      {
-        name: 'python',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'machine-learning',
+        name: 'education',
         color: 'blue-text-gradient',
       },
       {
-        name: 'data-analysis',
+        name: 'mentoring',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'javascript',
         color: 'yellow-text-gradient',
       },
     ],
-    image: '/path/to/fashion-trends.jpg',
-    source_code_link: 'https://github.com/your-username/fashion-trends-predictor',
-  },
-  {
-    name: 'AI Fashion Design Project',
-    description:
-      'An innovative project built with React, Three.js, and Tailwind that integrates AI-driven fashion design and visualization for a better user experience.',
-    tags: [
-      {
-        name: 'React',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'Threejs',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'Tailwind',
-        color: 'pink-text-gradient',
-      },
-      {
-        name: 'vite',
-        color: 'yellow-text-gradient',
-      },
-    ],
-    image: threejs1,
-    source_code_link: 'https://github.com/walex4242/ThreeJs_Project_Ai',
-  },
-  {
-    name: 'GodHeranca',
-    description:
-      'GodHeranca" is a Next.js-based web app where users can add items to their cart, enter their information, and be redirected to WhatsApp to complete their order.',
-    tags: [
-      {
-        name: 'Nextjs',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'TypeScript',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'Tailwind',
-        color: 'pink-text-gradient',
-      },
-    ],
-    image: godheranca,
-    source_code_link: 'https://github.com/walex4242/godherancafrontendweb',
-  },
-  {
-    name: 'GodHeranca Dashboard',
-    description:
-      'The "GodHeranca Dashboard" frontend, built with Next.js, lets supermarkets manage accounts, upload products, and track inventory. Products are displayed on the "GodHeranca" web app for user purchases.',
-    tags: [
-      {
-        name: 'Tailwind',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'TypeScript',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'NextJs',
-        color: 'yellow-text-gradient',
-      },
-    ],
-    image: dashboard,
-    source_code_link: 'https://github.com/walex4242/godherancadashboardfrontend',
+    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop',
+    source_code_link: 'https://youtube.com/@davidansa-coding',
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+const education = [
+  {
+    degree: 'BSc in Computer Science',
+    school: 'University of the People, USA',
+    date: '2021 - 2025 (In Progress)',
+    description: 'Pursuing Bachelor of Science in Computer Science with focus on software engineering and data structures.',
+  },
+];
+
+const achievements = [
+  '99% Performance Gain: Refactored architecture and code for speed',
+  '89% UX Boost: Released features that increased engagement and retention',
+  '67% Fewer Bugs: Maintained high-quality code and quick patches',
+  'Open Source Authority: Contributed to large-scale repos across teams',
+  '87% Client Satisfaction: Delivered timely, high-value digital solutions',
+  'Mentorship Impact: Coached junior developers into team leads',
+];
+
+const volunteer = [
+  {
+    role: 'Web Developer',
+    organization: 'Assurance Furniture',
+    date: '2019 - Present',
+    description: 'Created responsive website and trained staff on CMS best practices.',
+  },
+  {
+    role: 'Coding Mentor',
+    organization: 'YouTube',
+    date: 'Ongoing',
+    description: 'Mentored aspiring devs in HTML/CSS/JS through live streams and workshops.',
+  },
+  {
+    role: 'Open Source Contributor',
+    organization: 'GitHub',
+    date: 'Ongoing',
+    description: 'Pushed 230+ PRs, led discussions, fixed bugs, and co-authored feature branches.',
+  },
+];
+
+const personalInfo = {
+  name: 'David Ansa',
+  title: 'Web Developer | Software Developer | Machine Learning Specialist | Graphics Designer',
+  location: 'Safe Court Apartments, Ojulari Street, Lekki Peninsula II, Lagos',
+  phone: '+(234) 8108209953',
+  email: 'davitacols@gmail.com',
+  languages: ['English', 'Efik'],
+  objective: 'Creative and performance-driven Web and Software Developer with 8+ years of hands-on experience delivering scalable solutions, clean UI/UX, and robust backend systems. Known for solving complex challenges, mentoring dev teams, and launching high-impact applications.',
+};
+
+export { services, technologies, experiences, testimonials, projects, education, achievements, volunteer, personalInfo };

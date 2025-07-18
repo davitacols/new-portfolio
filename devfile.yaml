@@ -1,0 +1,33 @@
+schemaVersion: 2.2.0
+metadata:
+  name: new-portfolio
+  displayName: Portfolio Website
+  description: Development environment for portfolio website
+  version: 1.0.0
+  projectType: web
+components:
+  - name: dev-tools
+    container:
+      image: node:18
+      memoryLimit: 2Gi
+      mountSources: true
+      endpoints:
+        - name: web
+          targetPort: 3000
+          exposure: public
+commands:
+  - id: install-dependencies
+    exec:
+      component: dev-tools
+      commandLine: npm install
+      workingDir: ${PROJECT_SOURCE}
+  - id: start-dev-server
+    exec:
+      component: dev-tools
+      commandLine: npm run dev
+      workingDir: ${PROJECT_SOURCE}
+  - id: build
+    exec:
+      component: dev-tools
+      commandLine: npm run build
+      workingDir: ${PROJECT_SOURCE}

@@ -1,159 +1,133 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { styles } from '../styles';
+import { HiOutlineArrowRight, HiOutlineGlobe, HiOutlineCode } from 'react-icons/hi';
 
 const projects = [
   {
-    name: "AI Image Recognition",
-    description: "Deep learning system for real-time object detection and classification, achieving 95% accuracy on benchmark datasets. Implemented using TensorFlow and optimized for edge devices.",
-    tags: [
-      { name: "tensorflow", color: "bg-blue-400" },
-      { name: "python", color: "bg-green-400" },
-      { name: "deep-learning", color: "bg-purple-400" },
-    ],
-    image: "/placeholder.svg?height=450&width=800",
-    source_code_link: "https://github.com/davitacols/AI-FashionCreator",
+    name: "Pic2Nav",
+    description: "Created an AI-powered image-to-navigation engine with 98% location precision. Scaled to 500K+ users with optimized geolocation and fast delivery.",
+    tags: ["AI", "Geolocation", "React"],
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=450&fit=crop",
+    live_link: "https://pic2nav.com",
+    source_code_link: "https://github.com/davitacols/pic2nav",
   },
   {
-    name: "Data Analytics Platform",
-    description: "Scalable platform for processing and visualizing large datasets in real-time. Features include automated reporting, predictive analytics, and interactive dashboards.",
-    tags: [
-      { name: "react", color: "bg-blue-400" },
-      { name: "postgresql", color: "bg-green-400" },
-      { name: "python", color: "bg-yellow-400" },
-    ],
-    image: "/placeholder.svg?height=450&width=800",
-    source_code_link: "https://github.com/davitacols/dataDisk",
+    name: "Ansa FS",
+    description: "Designed a browser-based file system interface with intuitive drag/drop and nested folder support. Built using React and modern web APIs.",
+    tags: ["React", "File System", "Web APIs"],
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=450&fit=crop",
+    live_link: "https://dev-ansa.vercel.app",
+    source_code_link: "https://github.com/davitacols/ansa-fs",
   },
   {
-    name: "Fashion ML Model",
-    description: "Machine learning model for predicting fashion trends and generating personalized style recommendations based on user preferences and historical data.",
-    tags: [
-      { name: "pytorch", color: "bg-orange-400" },
-      { name: "scikit-learn", color: "bg-blue-400" },
-      { name: "flask", color: "bg-gray-400" },
-    ],
-    image: "/placeholder.svg?height=450&width=800",
-    source_code_link: "https://github.com/davitacols/Human-Body-Measurements-using-Computer-Vision",
+    name: "TurfglobalTSP",
+    description: "Developed a B2B market entry solution for African expansion. Integrated compliance tools, analytics, and partner matchmaking.",
+    tags: ["B2B", "Analytics", "Compliance"],
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop",
+    live_link: "https://turfglobaltsp.com",
+    source_code_link: "https://github.com/davitacols/turfglobaltsp",
   },
 ];
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl overflow-hidden border border-gray-700/50 shadow-lg hover:shadow-xl hover:border-blue-500/50 transition-all duration-300"
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="group relative bg-surface-dark rounded-lg overflow-hidden"
     >
-      <div className="relative aspect-[16/9] overflow-hidden bg-gray-800">
+      <div className="aspect-[16/9] overflow-hidden">
         <img
           src={project.image}
           alt={project.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          onError={(e) => {
-            e.target.src = "/placeholder.svg?height=450&width=800";
-          }}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent opacity-60" />
-        
+        <div className="absolute inset-0 bg-gradient-to-t from-surface-dark to-transparent opacity-60" />
+      </div>
+
+      <div className="absolute top-4 right-4 flex gap-2">
+        <a
+          href={project.live_link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 rounded-lg bg-surface-light/10 backdrop-blur-sm hover:bg-surface-light/20 transition-colors"
+          aria-label="View live demo"
+        >
+          <HiOutlineGlobe className="w-5 h-5 text-secondary" />
+        </a>
         <a
           href={project.source_code_link}
           target="_blank"
           rel="noopener noreferrer"
-          className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center transform transition-all duration-300 hover:scale-110 hover:bg-white/20"
+          className="p-2 rounded-lg bg-surface-light/10 backdrop-blur-sm hover:bg-surface-light/20 transition-colors"
+          aria-label="View source code"
         >
-          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-          </svg>
+          <HiOutlineCode className="w-5 h-5 text-secondary" />
         </a>
       </div>
 
       <div className="p-6 space-y-4">
-        <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
+        <h3 className="text-xl font-light text-secondary group-hover:text-secondary/90 transition-colors">
           {project.name}
         </h3>
         
-        <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+        <p className="text-secondary/70 text-sm leading-relaxed">
           {project.description}
         </p>
 
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span
-              key={tag.name}
-              className={`${tag.color} text-xs font-medium px-2.5 py-0.5 rounded-full text-gray-900`}
+              key={tag}
+              className="text-secondary/60 text-xs px-3 py-1 rounded-full border border-accent/10 bg-accent/5"
             >
-              {tag.name}
+              {tag}
             </span>
           ))}
         </div>
+
+        <a
+          href={project.live_link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-secondary/60 text-sm hover:text-secondary transition-colors"
+        >
+          View Project <HiOutlineArrowRight className="w-4 h-4" />
+        </a>
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 
-const Projects = () => {
+const Works = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-20 px-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(59,130,246,0.15),transparent_50%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(147,51,234,0.15),transparent_50%)] pointer-events-none" />
-      
+    <section id="work" className="py-20 px-6">
       <div className="max-w-6xl mx-auto space-y-12">
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center space-y-4"
-        >
-          <span className="inline-block px-3 py-1 text-sm font-medium bg-blue-500/10 text-blue-400 rounded-full">
-            My Portfolio
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
-            Featured Projects
-          </h2>
-        </motion.div>
+        <div className="space-y-2">
+          <p className={styles.sectionSubText}>Featured Work</p>
+          <h2 className={styles.sectionHeadText}>Projects.</h2>
+        </div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto text-center"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-secondary/70 text-base leading-relaxed max-w-3xl"
         >
-          Explore my portfolio of AI and software development projects. Each project demonstrates
-          my expertise in machine learning, data analytics, and software engineering, showcasing
-          real-world applications and innovative solutions.
+          Selected projects from my professional experience showcasing full-stack development, system optimization, and business solutions.
+          Each project demonstrates real-world impact and technical expertise.
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={project.name}
-              project={project}
-              index={index}
-            />
+          {projects.map((project) => (
+            <ProjectCard key={project.name} project={project} />
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex justify-center"
-        >
-          <a
-            href="#"
-            className="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300"
-          >
-            View All Projects
-            <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </a>
-        </motion.div>
       </div>
     </section>
   );
 };
 
-export default Projects;
-
+export default Works;

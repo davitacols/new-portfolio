@@ -1,32 +1,35 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: 'class', // Enable dark mode with the 'class' strategy
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        primary: '#050816',
-        secondary: '#aaa6c3',
-        tertiary: '#151030',
-        'black-100': '#100d25',
-        'black-200': '#090325',
-        'white-100': '#f3f3f3',
-        // Light theme variants
-        'light-primary': '#ffffff',
-        'light-secondary': '#f5f5f5',
-        'light-tertiary': '#eaeaea',
-        'light-black-100': '#d1d1d1',
-        'light-black-200': '#b1b1b1',
-        'light-white-100': '#ffffff',
+        primary: {
+          DEFAULT: '#0f0f0f',
+          light: '#ffffff',
+        },
+        secondary: {
+          DEFAULT: '#e1e1e1',
+          light: '#1a1a1a',
+        },
+        accent: {
+          DEFAULT: '#3d3d3d',
+          light: '#6366f1',
+        },
+        surface: {
+          DEFAULT: '#141414',
+          light: '#f8fafc',
+        },
       },
       boxShadow: {
-        card: '0px 35px 120px -15px #211e35',
+        subtle: '0 2px 10px rgba(0, 0, 0, 0.1)',
       },
       screens: {
         xs: '450px',
       },
-      backgroundImage: {
-        'hero-pattern': "url('/src/assets/herobg.png')",
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },
