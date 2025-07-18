@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { HiArrowRight } from 'react-icons/hi';
+import heroImage from '../assets/use-hero.jpg';
 
 const Hero = () => {
   return (
@@ -106,7 +107,7 @@ const Hero = () => {
           >
             <div className="relative aspect-square rounded-2xl bg-[#141414] border border-[#3d3d3d] overflow-hidden">
               <img 
-                src="/src/assets/use-hero.jpg" 
+                src={heroImage} 
                 alt="David Ansa" 
                 className="w-full h-full object-cover"
               />
