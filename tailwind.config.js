@@ -29,7 +29,7 @@ export default {
         xs: '450px',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['League Spartan', 'system-ui', 'sans-serif'],
       },
     },
   },

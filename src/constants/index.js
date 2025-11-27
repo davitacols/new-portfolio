@@ -189,130 +189,88 @@ const testimonials = [
 
 const projects = [
   {
-    name: 'OZ WEARS Inventory System',
+    name: 'Lola Muswell Hill',
     description:
-      'Built comprehensive accounting and inventory management system that improved operational efficiency by 97%. Features real-time tracking and automated reporting.',
-    tags: [
-      {
-        name: 'javascript',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'mysql',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'inventory',
-        color: 'pink-text-gradient',
-      },
-    ],
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
-    source_code_link: 'https://github.com/davitacols/oz-wears-inventory',
-  },
-  {
-    name: 'JACKISA Logistics Platform',
-    description:
-      'Engineered full-stack web application for logistics and transport management. Handles route optimization, fleet tracking, and customer management.',
+      'Professional restaurant website with modern design, online menu, and reservation system. Features responsive layout and optimized user experience.',
     tags: [
       {
         name: 'react',
         color: 'blue-text-gradient',
       },
       {
-        name: 'nodejs',
+        name: 'restaurant',
         color: 'green-text-gradient',
       },
       {
-        name: 'mongodb',
-        color: 'yellow-text-gradient',
-      },
-    ],
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&h=300&fit=crop',
-    source_code_link: 'https://github.com/davitacols/jackisa-logistics',
-  },
-  {
-    name: 'Assurance Furniture Website',
-    description:
-      'Created responsive furniture showcase website with CMS integration. Trained staff on content management and SEO best practices.',
-    tags: [
-      {
-        name: 'html',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'css',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'cms',
+        name: 'responsive',
         color: 'pink-text-gradient',
       },
     ],
-    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=300&fit=crop',
-    source_code_link: 'https://github.com/davitacols/assurance-furniture',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=300&fit=crop',
+    source_code_link: 'https://lolamuswellhill.co.uk',
   },
   {
-    name: 'Royalline Tech Internal Platform',
+    name: 'RWMS Nigeria',
     description:
-      'Developed scalable internal platform for project management and team collaboration. Implemented automated workflows and reporting systems.',
+      'Comprehensive waste management system for Nigeria. Features service booking, route optimization, and customer management dashboard.',
     tags: [
       {
-        name: 'php',
-        color: 'purple-text-gradient',
-      },
-      {
-        name: 'mysql',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'workflow',
-        color: 'blue-text-gradient',
-      },
-    ],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
-    source_code_link: 'https://github.com/davitacols/royalline-platform',
-  },
-  {
-    name: 'Ibedmore IT Management System',
-    description:
-      'Built comprehensive IT operations management system as sole IT staff. Automated system maintenance, user management, and technical support workflows.',
-    tags: [
-      {
-        name: 'python',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'automation',
+        name: 'nextjs',
         color: 'blue-text-gradient',
       },
       {
-        name: 'system-admin',
-        color: 'red-text-gradient',
-      },
-    ],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop',
-    source_code_link: 'https://github.com/davitacols/ibedmore-it-system',
-  },
-  {
-    name: 'YouTube Coding Tutorials',
-    description:
-      'Created educational content series teaching HTML, CSS, and JavaScript fundamentals. Mentored aspiring developers through live coding sessions.',
-    tags: [
-      {
-        name: 'education',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'mentoring',
+        name: 'management',
         color: 'green-text-gradient',
       },
       {
-        name: 'javascript',
+        name: 'nigeria',
         color: 'yellow-text-gradient',
       },
     ],
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop',
-    source_code_link: 'https://youtube.com/@davidansa-coding',
+    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=500&h=300&fit=crop',
+    source_code_link: 'https://rwms.ng',
+  },
+  {
+    name: 'Moses Portfolio',
+    description:
+      'Modern portfolio website showcasing creative work and professional experience. Built with smooth animations and responsive design.',
+    tags: [
+      {
+        name: 'portfolio',
+        color: 'purple-text-gradient',
+      },
+      {
+        name: 'react',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'animation',
+        color: 'green-text-gradient',
+      },
+    ],
+    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&h=300&fit=crop',
+    source_code_link: 'https://moses-sigma.vercel.app',
+  },
+  {
+    name: 'Kingdom Merch',
+    description:
+      'E-commerce platform for merchandise sales with shopping cart, payment integration, and inventory management system.',
+    tags: [
+      {
+        name: 'e-commerce',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'nextjs',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'payment',
+        color: 'red-text-gradient',
+      },
+    ],
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
+    source_code_link: 'https://kingdommerch.vercel.app',
   },
 ];
 

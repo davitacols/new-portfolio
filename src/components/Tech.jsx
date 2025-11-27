@@ -1,115 +1,80 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { styles } from '../styles';
-
-const technologies = [
-  { name: 'Python', icon: '🐍', category: 'Languages' },
-  { name: 'TensorFlow', icon: '🧠', category: 'ML/AI' },
-  { name: 'PyTorch', icon: '🔥', category: 'ML/AI' },
-  { name: 'React', icon: '⚛️', category: 'Frontend' },
-  { name: 'Node.js', icon: '🟢', category: 'Backend' },
-  { name: 'AWS', icon: '☁️', category: 'Cloud' },
-  { name: 'Docker', icon: '🐳', category: 'DevOps' },
-  { name: 'MongoDB', icon: '🍃', category: 'Database' },
-  { name: 'SQL', icon: '📊', category: 'Database' },
-  { name: 'Git', icon: '📦', category: 'Tools' },
-  { name: 'Linux', icon: '🐧', category: 'Tools' },
-  { name: 'Kubernetes', icon: '⚓️', category: 'DevOps' }
-];
-
-const TechCard = ({ name, icon, category, index }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      whileHover={{ y: -5 }}
-      className="group relative"
-    >
-      <div className="absolute inset-0 bg-accent/5 rounded-lg transform -rotate-3 transition-transform group-hover:rotate-0" />
-      <div className="relative bg-surface-dark p-4 rounded-lg border border-accent/10 transition-transform group-hover:translate-y-1">
-        <div className="flex items-center gap-3">
-          <div className="text-2xl group-hover:scale-110 transition-transform">
-            {icon}
-          </div>
-          <div>
-            <h3 className="text-secondary text-sm font-light">{name}</h3>
-            <p className="text-secondary/60 text-xs">{category}</p>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+import { technologies } from '../constants';
 
 const Tech = () => {
   return (
-    <section className="py-20 px-6 relative overflow-hidden">
-      {/* Background Elements */}
-      <motion.div 
-        animate={{ 
-          rotate: 360,
-          scale: [1, 1.2, 1],
-        }}
-        transition={{ 
-          duration: 20,
-          repeat: Infinity,
-          repeatType: "loop",
-          ease: "linear"
-        }}
-        className="absolute top-40 -right-20 w-80 h-80 bg-accent/5 rounded-full blur-[100px]"
-      />
-      
-      <div className="max-w-6xl mx-auto space-y-12">
-        <div className="space-y-2">
-          <p className={styles.sectionSubText}>My Skills</p>
-          <h2 className={styles.sectionHeadText}>Technologies.</h2>
-        </div>
-
-        <motion.p
+    <section className="py-20 px-6 bg-[#141414]">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <motion.div 
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-secondary/70 text-base leading-relaxed max-w-3xl"
+          transition={{ duration: 0.6 }}
         >
-          I work with a wide range of technologies in software development,
-          machine learning, and cloud infrastructure. Here are the key tools
-          and frameworks I use to build robust solutions.
-        </motion.p>
+          <div className="flex items-end justify-between mb-8">
+            <div>
+              <p className="text-[#3d3d3d] text-sm uppercase tracking-wider mb-2">Stack</p>
+              <h2 className="text-4xl md:text-6xl font-light text-[#e1e1e1]">
+                Technologies
+              </h2>
+            </div>
+            <div className="text-[#3d3d3d] text-sm hidden md:block">
+              {technologies.length} Tools
+            </div>
+          </div>
+          
+          <div className="w-full h-px bg-gradient-to-r from-[#3d3d3d] via-[#3d3d3d]/50 to-transparent" />
+        </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {technologies.map((tech, index) => (
-            <TechCard key={tech.name} {...tech} index={index} />
+        {/* Technologies Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1">
+          {technologies.map((technology, index) => (
+            <motion.div
+              key={technology.name}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              className="group relative aspect-square border border-[#3d3d3d]/20 hover:border-[#3d3d3d]/60 bg-[#0f0f0f] hover:bg-[#1a1a1a] transition-all duration-300 flex flex-col items-center justify-center p-6 cursor-default"
+            >
+              {/* Tech Icon */}
+              <div className="relative w-16 h-16 mb-4 flex items-center justify-center">
+                <img
+                  src={technology.icon}
+                  alt={technology.name}
+                  className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                />
+              </div>
+
+              {/* Tech Name */}
+              <p className="text-[#e1e1e1]/60 text-xs text-center font-light group-hover:text-[#e1e1e1] transition-colors">
+                {technology.name}
+              </p>
+
+              {/* Hover Indicator */}
+              <motion.div 
+                className="absolute bottom-0 left-0 right-0 h-px bg-[#3d3d3d] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
+            </motion.div>
           ))}
         </div>
 
-        {/* Floating Decorative Elements */}
+        {/* Bottom Text */}
         <motion.div
-          animate={{ 
-            y: [-10, 10, -10],
-            rotate: [0, 5, 0]
-          }}
-          transition={{ 
-            duration: 5,
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-          className="absolute bottom-20 left-10 w-20 h-20 border border-accent/10 rounded-lg"
-        />
-        
-        <motion.div
-          animate={{ 
-            y: [10, -10, 10],
-            rotate: [0, -5, 0]
-          }}
-          transition={{ 
-            duration: 6,
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-          className="absolute top-40 left-20 w-16 h-16 border border-accent/10 rounded-full"
-        />
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <p className="text-[#e1e1e1]/40 text-sm font-light">
+            Always exploring and mastering new technologies
+          </p>
+        </motion.div>
       </div>
     </section>
   );
